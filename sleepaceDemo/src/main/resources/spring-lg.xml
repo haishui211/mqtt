@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    <!-- RPC服务注册 -->   	
+   <bean name="lgServiceRegister" class="com.medica.rpc.server.thrift.ThriftRPCServiceRegister" lazy-init="true">
+    	<property name="services">
+			<map>
+				<entry key="com.medica.restonwifi.rpc.thrift.service.RestonWifiOptService" value-ref="restonWifiOptService" />
+			</map>
+		</property>	
+    </bean>	
+   <bean name="restonWifiOptService" class="com.medica.restonwifi.rpc.server.service.impl.RestonWifiOptServiceImpl" lazy-init="true"></bean>
+  
+   <bean name="eventRegister" class="com.medica.lg.event.FocusEventRegister" ></bean>
+</beans>
